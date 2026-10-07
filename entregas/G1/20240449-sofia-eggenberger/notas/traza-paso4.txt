@@ -1,0 +1,295 @@
+TRACING set to ON
+
+ count
+-------
+    11
+
+(1 rows)
+
+Tracing session: 3a87c380-bd08-11f1-8ecc-474478e36b0f
+
+ activity                                                                                                                                       | timestamp                  | source     | source_elapsed | client
+------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+------------+----------------+-----------
+                                                                                                                             Execute CQL3 query | 2026-09-30 19:50:46.456000 | 172.20.0.2 |              0 | 127.0.0.1
+ Parsing SELECT count(*) FROM ventas.ventas_por_ciudad WHERE ciudad = 'Quetzaltenango' AND fecha = '2024-08-01'; [Native-Transport-Requests-11] | 2026-09-30 19:50:46.457000 | 172.20.0.2 |            768 | 127.0.0.1
+                                                                                             Preparing statement [Native-Transport-Requests-11] | 2026-09-30 19:50:46.457001 | 172.20.0.2 |            968 | 127.0.0.1
+                                                                            Executing single-partition query on ventas_por_ciudad [ReadStage-4] | 2026-09-30 19:50:46.458000 | 172.20.0.2 |           1805 | 127.0.0.1
+                                                                                                     Acquiring sstable references [ReadStage-4] | 2026-09-30 19:50:46.458001 | 172.20.0.2 |           1869 | 127.0.0.1
+                                                        Skipped 0/1 non-slice-intersecting sstables, included 0 due to tombstones [ReadStage-4] | 2026-09-30 19:50:46.458002 | 172.20.0.2 |           2000 | 127.0.0.1
+                                                                                    Partition index found for sstable 1, size = 4 [ReadStage-4] | 2026-09-30 19:50:46.459000 | 172.20.0.2 |           2651 | 127.0.0.1
+                                                                                        Merged data from memtables and 1 sstables [ReadStage-4] | 2026-09-30 19:50:46.459001 | 172.20.0.2 |           2969 | 127.0.0.1
+                                                                                          Read 11 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.459002 | 172.20.0.2 |           3047 | 127.0.0.1
+                                                                                                                               Request complete | 2026-09-30 19:50:46.459481 | 172.20.0.2 |           3481 | 127.0.0.1
+
+
+ count
+-------
+  4911
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+
+Tracing session: 3a892310-bd08-11f1-8ecc-474478e36b0f
+
+ activity                                                                                                                       | timestamp                  | source     | source_elapsed | client
+--------------------------------------------------------------------------------------------------------------------------------+----------------------------+------------+----------------+-----------
+                                                                                                             Execute CQL3 query | 2026-09-30 19:50:46.465000 | 172.20.0.2 |              0 | 127.0.0.1
+   Parsing SELECT count(*) FROM ventas.ventas_por_ciudad WHERE producto = 'Miel' ALLOW FILTERING; [Native-Transport-Requests-5] | 2026-09-30 19:50:46.465001 | 172.20.0.2 |            156 | 127.0.0.1
+                                                                              Preparing statement [Native-Transport-Requests-5] | 2026-09-30 19:50:46.466000 | 172.20.0.2 |            260 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.467000 | 172.20.0.2 |           1521 | 127.0.0.1
+ Submitting range requests on 17 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.467001 | 172.20.0.2 |           1601 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.467002 | 172.20.0.2 |           1652 | 127.0.0.1
+                  Executing seq scan across 1 sstables for (min(-9223372036854775808), min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.467003 | 172.20.0.2 |           1699 | 127.0.0.1
+                                                                        Read 1432 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.472000 | 172.20.0.2 |           6868 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.475000 | 172.20.0.2 |          10085 | 127.0.0.1
+ Submitting range requests on 16 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.475001 | 172.20.0.2 |          10169 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.475002 | 172.20.0.2 |          10210 | 127.0.0.1
+                                   Executing seq scan across 1 sstables for [San Jose, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.476000 | 172.20.0.2 |          10257 | 127.0.0.1
+                                                                        Read 1534 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.478000 | 172.20.0.2 |          12529 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.478001 | 172.20.0.2 |          12991 | 127.0.0.1
+ Submitting range requests on 16 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.478002 | 172.20.0.2 |          13036 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.478003 | 172.20.0.2 |          13065 | 127.0.0.1
+                                   Executing seq scan across 1 sstables for [San Jose, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.478004 | 172.20.0.2 |          13146 | 127.0.0.1
+                                                                        Read 1392 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.481000 | 172.20.0.2 |          15390 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.481001 | 172.20.0.2 |          15725 | 127.0.0.1
+ Submitting range requests on 16 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.481002 | 172.20.0.2 |          15765 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.481003 | 172.20.0.2 |          15789 | 127.0.0.1
+                                   Executing seq scan across 1 sstables for [San Jose, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.481004 | 172.20.0.2 |          15836 | 127.0.0.1
+                                                                        Read 1382 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.484000 | 172.20.0.2 |          18717 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.484001 | 172.20.0.2 |          19008 | 127.0.0.1
+ Submitting range requests on 16 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.484002 | 172.20.0.2 |          19051 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.484003 | 172.20.0.2 |          19077 | 127.0.0.1
+                                   Executing seq scan across 1 sstables for [San Jose, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.484004 | 172.20.0.2 |          19132 | 127.0.0.1
+                                                                        Read 1578 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.487000 | 172.20.0.2 |          21279 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.487001 | 172.20.0.2 |          21562 | 127.0.0.1
+ Submitting range requests on 15 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.487002 | 172.20.0.2 |          21597 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.487003 | 172.20.0.2 |          21615 | 127.0.0.1
+                                   Executing seq scan across 1 sstables for [Alajuela, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.487004 | 172.20.0.2 |          21689 | 127.0.0.1
+                                                                        Read 1341 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.489000 | 172.20.0.2 |          23515 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.489001 | 172.20.0.2 |          23738 | 127.0.0.1
+ Submitting range requests on 15 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.489002 | 172.20.0.2 |          23777 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.489003 | 172.20.0.2 |          23796 | 127.0.0.1
+                                   Executing seq scan across 1 sstables for [Alajuela, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.489004 | 172.20.0.2 |          23858 | 127.0.0.1
+                                                                        Read 1464 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.491000 | 172.20.0.2 |          25827 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.491001 | 172.20.0.2 |          26058 | 127.0.0.1
+ Submitting range requests on 15 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.491002 | 172.20.0.2 |          26090 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.491003 | 172.20.0.2 |          26105 | 127.0.0.1
+                                   Executing seq scan across 1 sstables for [Alajuela, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.492000 | 172.20.0.2 |          26233 | 127.0.0.1
+                                                                        Read 1674 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.494000 | 172.20.0.2 |          28240 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.494001 | 172.20.0.2 |          28546 | 127.0.0.1
+ Submitting range requests on 15 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.494002 | 172.20.0.2 |          28578 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.494003 | 172.20.0.2 |          28596 | 127.0.0.1
+                                   Executing seq scan across 1 sstables for [Alajuela, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.494004 | 172.20.0.2 |          28638 | 127.0.0.1
+                                                                        Read 1620 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.496000 | 172.20.0.2 |          30597 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.496001 | 172.20.0.2 |          30875 | 127.0.0.1
+ Submitting range requests on 14 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.496002 | 172.20.0.2 |          30907 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.496003 | 172.20.0.2 |          30926 | 127.0.0.1
+                        Executing seq scan across 1 sstables for [Ciudad de Guatemala, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.496004 | 172.20.0.2 |          30999 | 127.0.0.1
+                                                                        Read 1424 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.498000 | 172.20.0.2 |          32957 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.498001 | 172.20.0.2 |          33234 | 127.0.0.1
+ Submitting range requests on 14 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.499000 | 172.20.0.2 |          33266 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.499001 | 172.20.0.2 |          33283 | 127.0.0.1
+                        Executing seq scan across 1 sstables for [Ciudad de Guatemala, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.499002 | 172.20.0.2 |          33364 | 127.0.0.1
+                                                                        Read 1503 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.500000 | 172.20.0.2 |          35192 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.501000 | 172.20.0.2 |          35470 | 127.0.0.1
+ Submitting range requests on 14 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.501001 | 172.20.0.2 |          35503 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.501002 | 172.20.0.2 |          35518 | 127.0.0.1
+                        Executing seq scan across 1 sstables for [Ciudad de Guatemala, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.501003 | 172.20.0.2 |          35559 | 127.0.0.1
+                                                                        Read 1599 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.503000 | 172.20.0.2 |          37581 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.503001 | 172.20.0.2 |          37835 | 127.0.0.1
+ Submitting range requests on 14 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.503002 | 172.20.0.2 |          37867 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.503003 | 172.20.0.2 |          37885 | 127.0.0.1
+                          Executing seq scan across 1 sstables for [Antigua Guatemala, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.503004 | 172.20.0.2 |          37909 | 127.0.0.1
+                                                                        Read 1348 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.505000 | 172.20.0.2 |          39702 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.505001 | 172.20.0.2 |          39951 | 127.0.0.1
+ Submitting range requests on 14 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.505002 | 172.20.0.2 |          39985 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.505003 | 172.20.0.2 |          40000 | 127.0.0.1
+                          Executing seq scan across 1 sstables for [Antigua Guatemala, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.505004 | 172.20.0.2 |          40094 | 127.0.0.1
+                                                                        Read 1344 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.509000 | 172.20.0.2 |          43748 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.509001 | 172.20.0.2 |          44056 | 127.0.0.1
+ Submitting range requests on 14 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.509002 | 172.20.0.2 |          44093 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.509003 | 172.20.0.2 |          44112 | 127.0.0.1
+                          Executing seq scan across 1 sstables for [Antigua Guatemala, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.509004 | 172.20.0.2 |          44176 | 127.0.0.1
+                                                                        Read 1541 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.511000 | 172.20.0.2 |          46123 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.512000 | 172.20.0.2 |          46434 | 127.0.0.1
+ Submitting range requests on 14 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.512001 | 172.20.0.2 |          46474 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.512002 | 172.20.0.2 |          46494 | 127.0.0.1
+                                Executing seq scan across 1 sstables for [Guadalajara, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.512003 | 172.20.0.2 |          46578 | 127.0.0.1
+                                                                        Read 1449 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.514000 | 172.20.0.2 |          48455 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.514001 | 172.20.0.2 |          48840 | 127.0.0.1
+ Submitting range requests on 14 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.514002 | 172.20.0.2 |          48911 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.514003 | 172.20.0.2 |          48956 | 127.0.0.1
+                                Executing seq scan across 1 sstables for [Guadalajara, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.514004 | 172.20.0.2 |          49025 | 127.0.0.1
+                                                                        Read 1836 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.516000 | 172.20.0.2 |          51162 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.517000 | 172.20.0.2 |          51505 | 127.0.0.1
+ Submitting range requests on 14 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.517001 | 172.20.0.2 |          51539 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.517002 | 172.20.0.2 |          51557 | 127.0.0.1
+                                Executing seq scan across 1 sstables for [Guadalajara, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.517003 | 172.20.0.2 |          51588 | 127.0.0.1
+                                                                        Read 1557 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.519000 | 172.20.0.2 |          53818 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.519001 | 172.20.0.2 |          54074 | 127.0.0.1
+ Submitting range requests on 13 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.519002 | 172.20.0.2 |          54110 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.519003 | 172.20.0.2 |          54134 | 127.0.0.1
+                                Executing seq scan across 1 sstables for [Tegucigalpa, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.519004 | 172.20.0.2 |          54218 | 127.0.0.1
+                                                                        Read 1457 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.521000 | 172.20.0.2 |          56222 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.522000 | 172.20.0.2 |          56482 | 127.0.0.1
+ Submitting range requests on 13 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.522001 | 172.20.0.2 |          56519 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.522002 | 172.20.0.2 |          56536 | 127.0.0.1
+                                Executing seq scan across 1 sstables for [Tegucigalpa, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.522003 | 172.20.0.2 |          56602 | 127.0.0.1
+                                                                        Read 1341 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.524000 | 172.20.0.2 |          58535 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.524001 | 172.20.0.2 |          58792 | 127.0.0.1
+ Submitting range requests on 13 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.524002 | 172.20.0.2 |          58827 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.524003 | 172.20.0.2 |          58842 | 127.0.0.1
+                                Executing seq scan across 1 sstables for [Tegucigalpa, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.524004 | 172.20.0.2 |          58930 | 127.0.0.1
+                                                                        Read 1633 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.526000 | 172.20.0.2 |          61209 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.527000 | 172.20.0.2 |          61490 | 127.0.0.1
+ Submitting range requests on 13 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.527001 | 172.20.0.2 |          61524 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.527002 | 172.20.0.2 |          61540 | 127.0.0.1
+                                Executing seq scan across 1 sstables for [Tegucigalpa, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.527003 | 172.20.0.2 |          61603 | 127.0.0.1
+                                                                        Read 1653 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.529000 | 172.20.0.2 |          64206 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.530000 | 172.20.0.2 |          64509 | 127.0.0.1
+ Submitting range requests on 13 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.530001 | 172.20.0.2 |          64550 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.530002 | 172.20.0.2 |          64569 | 127.0.0.1
+                                Executing seq scan across 1 sstables for [Tegucigalpa, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.530003 | 172.20.0.2 |          64597 | 127.0.0.1
+                                                                        Read 1423 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.532000 | 172.20.0.2 |          66635 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.532001 | 172.20.0.2 |          66980 | 127.0.0.1
+ Submitting range requests on 13 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.532002 | 172.20.0.2 |          67027 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.532003 | 172.20.0.2 |          67052 | 127.0.0.1
+                                Executing seq scan across 1 sstables for [Tegucigalpa, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.532004 | 172.20.0.2 |          67085 | 127.0.0.1
+                                                                        Read 1236 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.534000 | 172.20.0.2 |          68809 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.534001 | 172.20.0.2 |          69099 | 127.0.0.1
+ Submitting range requests on 11 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.534002 | 172.20.0.2 |          69138 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.534003 | 172.20.0.2 |          69155 | 127.0.0.1
+                                  Executing seq scan across 1 sstables for [Escuintla, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.534004 | 172.20.0.2 |          69219 | 127.0.0.1
+                                                                        Read 1674 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.537000 | 172.20.0.2 |          71266 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.537001 | 172.20.0.2 |          71508 | 127.0.0.1
+ Submitting range requests on 11 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.537002 | 172.20.0.2 |          71539 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.537003 | 172.20.0.2 |          71554 | 127.0.0.1
+                                  Executing seq scan across 1 sstables for [Escuintla, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.537004 | 172.20.0.2 |          71596 | 127.0.0.1
+                                                                        Read 1632 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.539000 | 172.20.0.2 |          73607 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.539001 | 172.20.0.2 |          73827 | 127.0.0.1
+ Submitting range requests on 11 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.539002 | 172.20.0.2 |          73857 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.539003 | 172.20.0.2 |          73870 | 127.0.0.1
+                                  Executing seq scan across 1 sstables for [Escuintla, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.539004 | 172.20.0.2 |          73899 | 127.0.0.1
+                                                                        Read 1501 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.541000 | 172.20.0.2 |          75778 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.541001 | 172.20.0.2 |          76010 | 127.0.0.1
+ Submitting range requests on 11 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.541002 | 172.20.0.2 |          76039 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.541003 | 172.20.0.2 |          76052 | 127.0.0.1
+                                  Executing seq scan across 1 sstables for [Escuintla, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.541004 | 172.20.0.2 |          76105 | 127.0.0.1
+                                                                        Read 1291 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.543000 | 172.20.0.2 |          77572 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.543001 | 172.20.0.2 |          77793 | 127.0.0.1
+  Submitting range requests on 9 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.543002 | 172.20.0.2 |          77819 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.543003 | 172.20.0.2 |          77832 | 127.0.0.1
+                             Executing seq scan across 1 sstables for [San Pedro Sula, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.543004 | 172.20.0.2 |          77878 | 127.0.0.1
+                                                                        Read 1798 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.545000 | 172.20.0.2 |          79740 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.545001 | 172.20.0.2 |          79964 | 127.0.0.1
+  Submitting range requests on 9 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.545002 | 172.20.0.2 |          79991 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.545003 | 172.20.0.2 |          80004 | 127.0.0.1
+                             Executing seq scan across 1 sstables for [San Pedro Sula, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.545004 | 172.20.0.2 |          80030 | 127.0.0.1
+                                                                        Read 1521 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.547000 | 172.20.0.2 |          81589 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.547001 | 172.20.0.2 |          81792 | 127.0.0.1
+  Submitting range requests on 9 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.547002 | 172.20.0.2 |          81819 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.547003 | 172.20.0.2 |          81831 | 127.0.0.1
+                             Executing seq scan across 1 sstables for [San Pedro Sula, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.547004 | 172.20.0.2 |          81898 | 127.0.0.1
+                                                                        Read 1404 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.549000 | 172.20.0.2 |          83381 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.549001 | 172.20.0.2 |          83636 | 127.0.0.1
+  Submitting range requests on 9 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.549002 | 172.20.0.2 |          83662 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.549003 | 172.20.0.2 |          83673 | 127.0.0.1
+                             Executing seq scan across 1 sstables for [San Pedro Sula, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.549004 | 172.20.0.2 |          83721 | 127.0.0.1
+                                                                        Read 1635 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.550000 | 172.20.0.2 |          85205 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.551000 | 172.20.0.2 |          85455 | 127.0.0.1
+  Submitting range requests on 9 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.551001 | 172.20.0.2 |          85480 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.551002 | 172.20.0.2 |          85491 | 127.0.0.1
+                             Executing seq scan across 1 sstables for [San Pedro Sula, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.551003 | 172.20.0.2 |          85576 | 127.0.0.1
+                                                                        Read 1536 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.552000 | 172.20.0.2 |          86951 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.552001 | 172.20.0.2 |          87148 | 127.0.0.1
+  Submitting range requests on 7 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.552002 | 172.20.0.2 |          87173 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.552003 | 172.20.0.2 |          87186 | 127.0.0.1
+                           Executing seq scan across 1 sstables for [Ciudad de Panama, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.552004 | 172.20.0.2 |          87216 | 127.0.0.1
+                                                                        Read 1705 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.554000 | 172.20.0.2 |          88568 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.554001 | 172.20.0.2 |          88807 | 127.0.0.1
+  Submitting range requests on 7 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.554002 | 172.20.0.2 |          88833 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.554003 | 172.20.0.2 |          88855 | 127.0.0.1
+                           Executing seq scan across 1 sstables for [Ciudad de Panama, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.554004 | 172.20.0.2 |          88902 | 127.0.0.1
+                                                                        Read 1595 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.555000 | 172.20.0.2 |          90204 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.556000 | 172.20.0.2 |          90414 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.556001 | 172.20.0.2 |          90440 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.556002 | 172.20.0.2 |          90451 | 127.0.0.1
+                             Executing seq scan across 1 sstables for [Quetzaltenango, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.556003 | 172.20.0.2 |          90473 | 127.0.0.1
+                                                                        Read 1507 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.557000 | 172.20.0.2 |          91801 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.557001 | 172.20.0.2 |          92012 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.557002 | 172.20.0.2 |          92044 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.557003 | 172.20.0.2 |          92055 | 127.0.0.1
+                             Executing seq scan across 1 sstables for [Quetzaltenango, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.557004 | 172.20.0.2 |          92090 | 127.0.0.1
+                                                                        Read 1329 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.558000 | 172.20.0.2 |          93212 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.559000 | 172.20.0.2 |          93445 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.559001 | 172.20.0.2 |          93475 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.559002 | 172.20.0.2 |          93489 | 127.0.0.1
+                             Executing seq scan across 1 sstables for [Quetzaltenango, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.559003 | 172.20.0.2 |          93514 | 127.0.0.1
+                                                                        Read 1886 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.560000 | 172.20.0.2 |          95175 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.561000 | 172.20.0.2 |          95402 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.561001 | 172.20.0.2 |          95430 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.561002 | 172.20.0.2 |          95443 | 127.0.0.1
+                                  Executing seq scan across 1 sstables for [Santa Ana, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.561003 | 172.20.0.2 |          95480 | 127.0.0.1
+                                                                        Read 1641 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.562000 | 172.20.0.2 |          96932 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.562001 | 172.20.0.2 |          97129 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.562002 | 172.20.0.2 |          97158 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.562003 | 172.20.0.2 |          97170 | 127.0.0.1
+                           Executing seq scan across 1 sstables for [Ciudad de Mexico, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.562004 | 172.20.0.2 |          97211 | 127.0.0.1
+                                                                        Read 1463 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.564000 | 172.20.0.2 |          98452 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.564001 | 172.20.0.2 |          98646 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.564002 | 172.20.0.2 |          98689 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.564003 | 172.20.0.2 |          98703 | 127.0.0.1
+                           Executing seq scan across 1 sstables for [Ciudad de Mexico, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.564004 | 172.20.0.2 |          98730 | 127.0.0.1
+                                                                        Read 1547 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.565000 | 172.20.0.2 |         100197 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.566000 | 172.20.0.2 |         100417 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.566001 | 172.20.0.2 |         100448 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.566002 | 172.20.0.2 |         100462 | 127.0.0.1
+                           Executing seq scan across 1 sstables for [Ciudad de Mexico, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.566003 | 172.20.0.2 |         100487 | 127.0.0.1
+                                                                        Read 1396 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.567000 | 172.20.0.2 |         101826 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.567001 | 172.20.0.2 |         102029 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.567002 | 172.20.0.2 |         102055 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.567003 | 172.20.0.2 |         102066 | 127.0.0.1
+                           Executing seq scan across 1 sstables for [Ciudad de Mexico, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.567004 | 172.20.0.2 |         102103 | 127.0.0.1
+                                                                        Read 1391 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.569000 | 172.20.0.2 |         103414 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.569001 | 172.20.0.2 |         103634 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.569002 | 172.20.0.2 |         103661 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.569003 | 172.20.0.2 |         103672 | 127.0.0.1
+                                 Executing seq scan across 1 sstables for [San Miguel, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.569004 | 172.20.0.2 |         103692 | 127.0.0.1
+                                                                        Read 1641 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.571000 | 172.20.0.2 |         105407 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.571001 | 172.20.0.2 |         105663 | 127.0.0.1
+  Submitting range requests on 6 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.571002 | 172.20.0.2 |         105692 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.571003 | 172.20.0.2 |         105705 | 127.0.0.1
+                                 Executing seq scan across 1 sstables for [San Miguel, min(-9223372036854775808)] [ReadStage-8] | 2026-09-30 19:50:46.571004 | 172.20.0.2 |         105738 | 127.0.0.1
+                                                                        Read 1643 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.572000 | 172.20.0.2 |         107110 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.573000 | 172.20.0.2 |         107364 | 127.0.0.1
+  Submitting range requests on 5 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.573001 | 172.20.0.2 |         107390 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.573002 | 172.20.0.2 |         107401 | 127.0.0.1
+                                  Executing seq scan across 1 sstables for [Monterrey, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.573003 | 172.20.0.2 |         107471 | 127.0.0.1
+                                                                        Read 1327 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.574000 | 172.20.0.2 |         108537 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.574001 | 172.20.0.2 |         108743 | 127.0.0.1
+  Submitting range requests on 5 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.574002 | 172.20.0.2 |         108769 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.574003 | 172.20.0.2 |         108781 | 127.0.0.1
+                                  Executing seq scan across 1 sstables for [Monterrey, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.574004 | 172.20.0.2 |         108806 | 127.0.0.1
+                                                                        Read 1434 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.575000 | 172.20.0.2 |         110037 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.576000 | 172.20.0.2 |         110246 | 127.0.0.1
+  Submitting range requests on 5 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.576001 | 172.20.0.2 |         110271 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.576002 | 172.20.0.2 |         110282 | 127.0.0.1
+                                  Executing seq scan across 1 sstables for [Monterrey, min(-9223372036854775808)] [ReadStage-4] | 2026-09-30 19:50:46.576003 | 172.20.0.2 |         110340 | 127.0.0.1
+                                                                        Read 1821 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.577000 | 172.20.0.2 |         111975 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.577001 | 172.20.0.2 |         112185 | 127.0.0.1
+  Submitting range requests on 1 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.577002 | 172.20.0.2 |         112211 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.577003 | 172.20.0.2 |         112220 | 127.0.0.1
+                               Executing seq scan across 1 sstables for [San Salvador, min(-9223372036854775808)) [ReadStage-8] | 2026-09-30 19:50:46.578000 | 172.20.0.2 |         112242 | 127.0.0.1
+                                                                        Read 1673 live rows and 0 tombstone cells [ReadStage-8] | 2026-09-30 19:50:46.579000 | 172.20.0.2 |         113764 | 127.0.0.1
+                                                                        Computing ranges to query [Native-Transport-Requests-5] | 2026-09-30 19:50:46.579001 | 172.20.0.2 |         114006 | 127.0.0.1
+  Submitting range requests on 1 ranges with a concurrency of 1 (52008.0 rows per range expected) [Native-Transport-Requests-5] | 2026-09-30 19:50:46.579002 | 172.20.0.2 |         114048 | 127.0.0.1
+                                                            Submitted 1 concurrent range requests [Native-Transport-Requests-5] | 2026-09-30 19:50:46.579003 | 172.20.0.2 |         114065 | 127.0.0.1
+                               Executing seq scan across 1 sstables for [San Salvador, min(-9223372036854775808)) [ReadStage-4] | 2026-09-30 19:50:46.579004 | 172.20.0.2 |         114159 | 127.0.0.1
+                                                                         Read 248 live rows and 0 tombstone cells [ReadStage-4] | 2026-09-30 19:50:46.580000 | 172.20.0.2 |         114644 | 127.0.0.1
+                                                                                                               Request complete | 2026-09-30 19:50:46.579811 | 172.20.0.2 |         114811 | 127.0.0.1
+
+TRACING set to OFF
+

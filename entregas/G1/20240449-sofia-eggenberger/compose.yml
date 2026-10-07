@@ -1,0 +1,77 @@
+# =============================================================================
+#  Taller Apache Cassandra 5.0 - Big Data, UFM 2026 S2
+#
+#  Parte 1: un solo nodo, con los nombres por defecto.
+#  Parte 2: queda solo el servicio del nodo que te toco en el cluster del grupo
+#  (cassandra1, cassandra2 o cassandra3), con el nombre de cluster y el
+#  datacenter de tu grupo.
+#
+#  Los datos viven en volumenes con nombre y sobreviven a "docker compose down".
+# =============================================================================
+# Nombre del proyecto de Compose del taller.
+name: taller-cassandra
+
+# Conjunto de servicios del taller.
+services:
+
+  # ---------------------------------------------------------------------------
+  # Servicio de mi nodo cassandra3 en el cluster del grupo.
+  # ---------------------------------------------------------------------------
+  cassandra3:
+    # Imagen oficial de Cassandra usada en todo el taller.
+    image: cassandra:5.0.8
+    # Nombre fijo del contenedor para los comandos de la guia.
+    container_name: cassandra3
+    # Nombre del nodo que Cassandra anuncia dentro del contenedor.
+    hostname: cassandra3
+    # Puertos publicados hacia la red local.
+    ports:
+      # Publica el puerto CQL para conectarse a este nodo.
+      - "9042:9042"
+      # Publica el puerto de comunicacion entre nodos.
+      - "7000:7000"
+    # Variables que configuran el nodo de Cassandra.
+    environment:
+      # Nombre propio del cluster del grupo 1.
+      CASSANDRA_CLUSTER_NAME: UFM-G1
+      # Datacenter donde vive este nodo.
+      CASSANDRA_DC: dc-g1
+      # Rack logico de este nodo.
+      CASSANDRA_RACK: rack1
+      # Snitch que lee la topologia del datacenter y rack.
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+      # IP Tailscale de esta laptop que los otros nodos deben usar para encontrarla.
+      CASSANDRA_BROADCAST_ADDRESS: 100.106.51.83
+      # IP Tailscale de la laptop de Juan, que tiene el nodo semilla cassandra1.
+      CASSANDRA_SEEDS: 100.71.193.83
+      # Memoria maxima de Java para este nodo.
+      MAX_HEAP_SIZE: 512M
+      # Tamano inicial de la memoria nueva de Java.
+      HEAP_NEWSIZE: 128M
+    # Montajes persistentes y de datos del repo.
+    volumes:
+      # Volumen propio para los datos persistentes de cassandra3.
+      - cassandra3-data:/var/lib/cassandra
+      # Los CSV del repo quedan dentro del contenedor en /data, solo lectura.
+      - ./data:/data:ro
+
+# -----------------------------------------------------------------------------
+# Volumen con nombre donde viven los datos de cassandra3.
+#   docker compose down      -> lo conserva
+#   docker compose down -v   -> LO BORRA (solo para empezar de cero)
+# -----------------------------------------------------------------------------
+# Volumenes declarados para este proyecto.
+volumes:
+  # Volumen propio de este nodo del cluster.
+  cassandra3-data:
+
+# Red interna propia para evitar choque con la red del hotspot.
+networks:
+  # Red por defecto usada por el servicio cassandra3.
+  default:
+    # Configuracion de direcciones de la red interna.
+    ipam:
+      # Parametros de asignacion de IP para Docker.
+      config:
+        # Subred que no se cruza con la red 172.20.10.0/28 del hotspot.
+        - subnet: 10.77.0.0/16
